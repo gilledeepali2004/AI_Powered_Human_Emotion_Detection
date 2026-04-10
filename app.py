@@ -441,6 +441,14 @@ def load_model():
         tf.keras.layers.Dropout(0.5),
         tf.keras.layers.Dense(7, activation="softmax")
     ])
+    import os
+import gdown
+
+FILE_ID = "1_vagA5VYZll2PNxwvCFUl9z-2NsS9U91"
+
+if not os.path.exists("fer2.h5"):
+    url = f"https://drive.google.com/uc?id={FILE_ID}"
+    gdown.download(url, "fer2.h5", quiet=False)
 
     model.build((None, 48, 48, 1))
     model.load_weights("fer2.h5")
